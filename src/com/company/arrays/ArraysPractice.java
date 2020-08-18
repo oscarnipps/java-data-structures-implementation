@@ -17,9 +17,12 @@ public class ArraysPractice {
         //searching for an item in the array has the linear time complexity O(n)
         for (int i = 0; i < itemsArray.length; i++) {
             if (searchItem == itemsArray[i]) {
-                System.out.println("item " + searchItem + "found at index " + i);
+                System.out.println("item " + searchItem + " found at index " + i);
                 break;
             }
         }
+
+        //reversing an array in place
+        ArrayReversal.reverseArray(itemsArray);
     }
 }
