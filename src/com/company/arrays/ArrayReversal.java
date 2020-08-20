@@ -1,5 +1,7 @@
 package com.company.arrays;
 
+import java.util.*;
+
 public class ArrayReversal {
 
     //reverses an array in place
@@ -7,12 +9,12 @@ public class ArrayReversal {
 
         System.out.println("\n----array before reversing----");
         for (int i = 0; i < array.length; i++) {
-            System.out.print("\t"+array[i]);
+            System.out.print("\t" + array[i]);
         }
 
         System.out.println("\n");
 
-        for (int start = 0, end = array.length-1 ; start < array.length; start++, end--) {
+        for (int start = 0, end = array.length - 1; start < array.length; start++, end--) {
             if (start > end) {
                 System.out.println("reversal finished...");
                 break;
@@ -28,5 +30,8 @@ public class ArrayReversal {
         for (int i = 0; i < array.length; i++) {
             System.out.print("\t" + array[i]);
         }
+
+
+
     }
 }
