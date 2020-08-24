@@ -10,11 +10,6 @@ import java.util.Map;
 */
 public class AnagramChecker {
 
-    public static void main(String[] args) {
-        String word1 = "a gentleman";
-        String word2 = "elegant man";
-        System.out.println("is anagram -> " + checkForAnagram(word1,word2));
-    }
     public static boolean checkForAnagram(String firstString, String secondString) {
         //map to uniquely hold each character with the count
         Map<Character, Integer> anagramMap = new HashMap<>();
@@ -30,10 +25,6 @@ public class AnagramChecker {
             }
             anagramMap.replace(firstString.charAt(i), anagramMap.get(firstString.charAt(i)) + 1);
         }
-        System.out.println("---items in the map---");
-        anagramMap.forEach((key,value)->{
-            System.out.println("key -> " + key + " value -> " + value);
-        });
 
         //if the character does not exist in the map then return
         for (int i = 0; i < secondString.trim().length(); i++) {

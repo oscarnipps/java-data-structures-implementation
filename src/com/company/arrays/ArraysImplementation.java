@@ -1,6 +1,6 @@
 package com.company.arrays;
 
-public class ArraysPractice {
+public class ArraysImplementation {
     public static void main(String[] args) {
         //initialize an array by setting the size upfront
         int[] numbersArray = new int[4];
@@ -24,5 +24,8 @@ public class ArraysPractice {
 
         //reversing an array in place
         ArrayReversal.reverseArray(itemsArray);
+
+        //checking if two words are anagrams
+        System.out.println("is the two words or phrases anagrams : " + AnagramChecker.checkForAnagram("a gentleman","elegant man"));
     }
 }
