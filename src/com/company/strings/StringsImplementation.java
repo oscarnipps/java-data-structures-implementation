@@ -16,6 +16,10 @@ public class StringsImplementation {
 
         System.out.println();
 
+        //getting prefixes for a string
+        value = "house";
+        System.out.println("-----getting string prefixes for : '" + value + "'" );
+        StringPrefix.getStringPrefixes(value).forEach((prefixValue)-> System.out.println(prefixValue));
 
     }
 }
