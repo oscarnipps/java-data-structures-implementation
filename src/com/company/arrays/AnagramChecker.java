@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
-*   checks if two words(or phrases are anagrams) i.e "adobe" is anagram with "abode" , "binary" with "brainy"
+*  checks if two words(or phrases) are anagrams i.e "adobe" is anagram with "abode" , "binary" with "brainy"
 *
-*   created by oscar 20/08/2020
+*  created by oscar 20/08/2020
 */
 public class AnagramChecker {
 

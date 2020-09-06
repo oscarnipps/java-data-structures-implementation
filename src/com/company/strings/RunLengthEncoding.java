@@ -7,7 +7,8 @@ import java.util.Set;
 
 
 /*
- *   encodes a string using run length encoding i.e 'AAABCC' would be encoded to '3AB2C' , 'ABACCCEEEE' would be encoded to 'ABA3C4E'"
+ *   encodes a string using run length encoding i.e 'AAABCC' would be encoded to '3AB2C' ,
+ *  'ABACCCEEEE' would be encoded to 'ABA3C4E'"
  *
  *   created by oscar 20/08/2020
  */
@@ -16,7 +17,7 @@ public class RunLengthEncoding {
 
     public static void main(String[] args) {
         String value = "AABB";
-        System.out.println( "encoded value for \"" + value + "\" is : " + getEncodedValue(value) );
+        System.out.println("encoded value for \"" + value + "\" is : " + getEncodedValue(value));
     }
 
     public static String getEncodedValue(String value) {
