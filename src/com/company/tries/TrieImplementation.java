@@ -10,5 +10,6 @@ public class TrieImplementation {
         trie.insert("flow");
         trie.insert("flight");
 
+        System.out.println("longest common prefix is : " + trie.longestCommonPrefix());
     }
 }
