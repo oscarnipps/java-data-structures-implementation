@@ -1,17 +1,16 @@
 package com.company.linkedlist;
 
 public class LinkedListImplementation {
-    Node node;
-    String data;
 
-    public LinkedListImplementation(String data) {
-        this.node = null;
-        this.data = data;
-    }
+    public static void main(String args[]) {
+        LinkedList linkedList = new LinkedList();
 
-    public void insert(String data) {
-        Node tempNode = node;
-        //set data at that point
-        //set reference to next node
+        linkedList.insertAtFirst(3);
+        linkedList.insertAtFirst(4);
+        linkedList.insertAtFirst(5);
+        linkedList.insertAtFirst(6);
+
+        linkedList.traverseList();
+
     }
 }

@@ -1,12 +1,27 @@
 package com.company.linkedlist;
 
 public class Node {
+    private int data;
+    private Node next;
 
-    String data;
-    Node nextNode;
-
-    public Node(String data, Node node) {
+    public Node(int data) {
         this.data = data;
-        this.nextNode = node;
     }
+
+    public int getData() {
+        return data;
+    }
+
+    public void setData(int data) {
+        this.data = data;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
 }
