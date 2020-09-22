@@ -36,7 +36,57 @@ public class LinkedList {
     }
 
     public void insertAtPosition(int data, int position) {
+        //start from the head
+        Node currentNode = head;
+        //new node to insert
+        Node newNode = new Node(data);
+        //insert at head if the position is equal to 0 which denotes the head
+        if (position == 0) {
+            newNode.setNext(currentNode);
+            head = newNode;
+            return;
+        }
+        int count = 0;
+        while (currentNode.getNext() != null) {
+            //break if the position to be inserted is found
+            if (count == position - 1 ) {
+                break;
+            }
+            //move to the next node and increment the count
+            currentNode = currentNode.getNext();
+            count++;
+        }
+        //make the new node point to the next node of the current
+        newNode.setNext(currentNode.getNext());
+        //set the new node as the current's next node
+        currentNode.setNext(newNode);
+    }
 
+    public void reverseLinkedList() {
+        Node reversed = null;
+        Node currentNode = head;
+
+        while (head != null) {
+            //move the head to the next node
+            head = head.getNext();
+            currentNode.setNext(reversed);
+            reversed = currentNode;
+            currentNode = head;
+        }
+        displayList(reversed);
+    }
+
+    public void displayList(Node node) {
+        if (node == null) {
+            System.out.print(" list is empty ");
+            return; //list is empty
+        }
+        Node current = node;
+        while (current.getNext() != null) {
+            System.out.print(current.getData() + " -> ");
+            current = current.getNext();
+        }
+        System.out.print(current.getData() + " -> " + current.getNext() + "\n");
     }
 
     public void traverseList() {
@@ -51,7 +101,7 @@ public class LinkedList {
             current = current.getNext();
         }
 
-        System.out.print(current.getData() + " -> " + current.getNext());
+        System.out.print(current.getData() + " -> " + current.getNext() + "\n");
     }
 
 }
