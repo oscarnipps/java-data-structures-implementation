@@ -38,28 +38,104 @@ public class LinkedList {
     public void insertAtPosition(int data, int position) {
         //start from the head
         Node currentNode = head;
-        //new node to insert
+
         Node newNode = new Node(data);
+
         //insert at head if the position is equal to 0 which denotes the head
         if (position == 0) {
             newNode.setNext(currentNode);
             head = newNode;
             return;
         }
+
         int count = 0;
+
         while (currentNode.getNext() != null) {
             //break if the position to be inserted is found
-            if (count == position - 1 ) {
+            if (count == position - 1) {
                 break;
             }
+
             //move to the next node and increment the count
             currentNode = currentNode.getNext();
             count++;
         }
+
         //make the new node point to the next node of the current
         newNode.setNext(currentNode.getNext());
+
         //set the new node as the current's next node
         currentNode.setNext(newNode);
+    }
+
+    public void deleteAtFront() {
+        //return if head is empty
+        if (head == null) {
+            return;
+        }
+        Node currentNode = head.getNext();
+        head.setNext(null);
+        head = currentNode;
+    }
+
+    public void deleteAtEnd() {
+        //return if head is empty
+        if (head == null) {
+            return;
+        }
+
+        //delete head if head node is the only node in the list
+        if (head.getNext() == null) {
+            head = null;
+            return;
+        }
+
+        Node currentNode = head;
+
+        //iterate till the node with a value of null is found which is the last node in the list
+        //with the current node pointing to the node that has a next of null
+        while (currentNode.getNext().getNext() != null) {
+            currentNode = currentNode.getNext();
+        }
+
+        //make the node to be the last node
+        currentNode.setNext(null);
+    }
+
+    public void deleteAtPosition(int position) {
+        //return if head is empty
+        if (head == null) {
+            return;
+        }
+
+        //since position 0 is pointing to the head node then delete the node
+        if (position == 0) {
+            Node tempNode = head.getNext();
+            head.setNext(null);
+            head = tempNode;
+            return;
+        }
+
+        Node currentNode = head;
+        int count = 0;
+
+        while (currentNode.getNext() != null) {
+            //stop iteration when the position has been seen
+            if (count == position - 1) break;
+            //move to the next node and increment count
+            currentNode = currentNode.getNext();
+            count++;
+        }
+
+        //return if position exceeded the total number of items in the list
+        if (count < position) return;
+
+        //get the next node of the node to be deleted
+        Node tempNode = currentNode.getNext().getNext();
+        //delete the node
+        currentNode.getNext().setNext(null);
+        //link up the node
+        currentNode.setNext(tempNode);
     }
 
     public void reverseLinkedList() {
@@ -91,7 +167,7 @@ public class LinkedList {
 
     public void traverseList() {
         if (head == null) {
-            System.out.print(" list is empty ");
+            System.out.print("list is empty ");
             return; //list is empty
         }
 
