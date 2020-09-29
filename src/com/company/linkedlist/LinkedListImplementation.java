@@ -24,9 +24,9 @@ public class LinkedListImplementation {
         //linkedList.deleteAtEnd();
         //linkedList.traverseList();
 
-        int position = 9;
-        System.out.println("\ndelete at position "  + position + " of linked list:");
-        linkedList.deleteAtPosition(position);
-        linkedList.traverseList();
+        //int position = 9;
+        //System.out.println("\ndelete at position "  + position + " of linked list:");
+        //linkedList.deleteAtPosition(position);
+        //linkedList.traverseList();
     }
 }
