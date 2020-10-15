@@ -17,7 +17,5 @@ public class QueueImplementation {
         queues.enqueue("27");
         queues.printElements();
 
-
-
     }
 }

@@ -34,7 +34,6 @@ public class Queues {
             rear = null;
             return;
         }
-
         //delete the node at the front and move the front pointer to the next node
         Node tempNode = front.next;
         front.next = null;
@@ -49,7 +48,7 @@ public class Queues {
 
         //never modify the head node directly
         Node currentNode = front;
-
+        
         while (currentNode.next != null) {
             System.out.print("| " + currentNode.data + " |");
             currentNode = currentNode.next;
