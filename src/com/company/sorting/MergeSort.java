@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class MergeSort {
 
     public static void main(String[] args) {
-        int[] items = {4, 0,2 ,7, 3,-1};
-        int[] result = new int[items.length];
+        int[] items = {4, 0, 2, 7, 3, -1};
+        int[] temp = new int[items.length];
 
         System.out.println("array to sort :");
         printArrayItems(items);
 
-        mergeSort(items, result, 0, items.length - 1);
+        mergeSort(items, temp, 0, items.length - 1);
 
         System.out.println("array after sorting with merge sort :");
         printArrayItems(items);
@@ -76,12 +76,10 @@ public class MergeSort {
                 System.out.print("[ " + arr[i]);
                 continue;
             }
-
             if (i + 1 == arr.length) {
                 System.out.print(", " + arr[i] + " ]\n");
                 continue;
             }
-
             System.out.print(", " + arr[i]);
         }
     }
