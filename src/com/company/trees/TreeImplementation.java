@@ -12,5 +12,17 @@ public class TreeImplementation {
         tree.insertNode(5);
         tree.insertNode(17);
         tree.insertNode(40);
+
+        System.out.print("in-order transversal : ");
+        tree.inOrderTransversal();
+
+        System.out.print("\npre-order transversal : ");
+        tree.preOrderTransversal();
+
+        System.out.print("\nlevel-order transversal : ");
+        tree.levelOrderTransversal();
+
+        System.out.print("\npost-order transversal : ");
+        tree.postOrderTransversal();
     }
 }
