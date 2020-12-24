@@ -47,118 +47,116 @@ public class Tree {
 
     //the policy for pre-order is N-L-R (visit the parent first, then the left child and then the right child)
     //for every node in the tree
-    public void preOrderTransversal(){
-        //since in order transversal is a depth first transversal a stack would be needed
+    public void preOrderIterative() {
+
+        //since pre-order transversal is a depth first transversal a stack would be needed
         Stack<TreeNode> nodeStack = new Stack<>();
 
-        //would hold the distinctively visited nodes
-        Set<TreeNode> visitedSet = new HashSet<>();
-
-        TreeNode currentNode = root;
-        nodeStack.push(null);
-        nodeStack.push(currentNode);
-
-        while (!nodeStack.isEmpty() ) {
-            //visit the node
-            if (!visitedSet.contains(currentNode)) {
-                System.out.print(" " + currentNode.data + " ");
-                visitedSet.add(currentNode);
-            }
-
-            if (currentNode.leftChild != null && !visitedSet.contains(currentNode.leftChild)) {
-                currentNode = currentNode.leftChild;
-                nodeStack.push(currentNode);
-                continue;
-            }
-
-            if (currentNode.rightChild != null && !visitedSet.contains(currentNode.rightChild)) {
-                currentNode = currentNode.rightChild;
-                nodeStack.push(currentNode);
-                continue;
-            }
-
-            currentNode = nodeStack.pop();
-        }
-    }
-
-    public void inOrderTransversal() {
-        //since in order transversal is a depth first transversal a stack would be needed
-        Stack<TreeNode> nodeStack = new Stack<>();
-
-        //would hold the distinctively visited nodes
-        Set<TreeNode> visitedSet = new HashSet<>();
-
-        TreeNode currentNode = root;
-
-        nodeStack.push(currentNode);
+        nodeStack.push(root);
 
         while (!nodeStack.isEmpty()) {
-            //move to the not null left child that has not being visited and push the node to the stack
-            if (currentNode.leftChild != null && !visitedSet.contains(currentNode.leftChild)) {
-                currentNode = currentNode.leftChild;
-                nodeStack.push(currentNode);
-                continue;
-            }
-            //add the node to the visited set holding uniquely visited nodes
-            visitedSet.add(currentNode);
 
-            //visit the node / or any other operation (print the data)
+            TreeNode currentNode = nodeStack.pop();
+
+            //visit the node / or any other operation (i.e here just print the data)
             System.out.print(" " + currentNode.data + " ");
 
-            //remove visited node from the stack
-            nodeStack.pop();
+            //push non-null right child to the stack
+            if (currentNode.rightChild != null) nodeStack.push(currentNode.rightChild);
 
-            //move to the not null right child that has not being visited and push the node to the stack
-            if (currentNode.rightChild != null && !visitedSet.contains(currentNode.rightChild)) {
-                currentNode = currentNode.rightChild;
-                nodeStack.push(currentNode);
-                continue;
-            }
-
-            if (nodeStack.isEmpty()) break;
-
-            //move to the node at the top of the stack
-            currentNode = nodeStack.peek();
+            //push non-null left  child to the stack
+            if (currentNode.leftChild != null) nodeStack.push(currentNode.leftChild);
         }
     }
 
-    public void postOrderTransversal() {
+    public void preOrderRecursive(TreeNode node) {
+        //base case
+        if (node == null) return;
+
+        //visit the node / or any other operation (print the data)
+        System.out.print(" " + node.data + " ");
+
+        preOrderRecursive(node.leftChild);
+
+        preOrderRecursive(node.rightChild);
+    }
+
+
+    //the policy for in-order is L-N-R (go to left node i.e as far left as possible, move to the parent node, then the right node)
+    //for every node in the tree
+    public void inOrderIterative() {
         //since in order transversal is a depth first transversal a stack would be needed
         Stack<TreeNode> nodeStack = new Stack<>();
 
-        //would hold the distinctively visited nodes
-        Set<TreeNode> visitedSet = new HashSet<>();
-
         TreeNode currentNode = root;
-        nodeStack.push(null);
-        nodeStack.push(currentNode);
 
-        while(!nodeStack.isEmpty()){
-            if (currentNode == null) {
-                break;
-            }
+        while(!nodeStack.isEmpty() || currentNode != null){
 
-            if (!visitedSet.contains(currentNode)) {
+            //keep going to the far left as possible (i.e till a null left node is reached)
+            while (currentNode != null) {
                 nodeStack.push(currentNode);
-            }
-
-            if (currentNode.leftChild != null && !visitedSet.contains(currentNode.leftChild) ) {
                 currentNode = currentNode.leftChild;
-                continue;
-            }
-
-            if (currentNode.rightChild != null && !visitedSet.contains(currentNode.rightChild)  ) {
-                currentNode = currentNode.rightChild;
-                continue;
-            }
-
-            //add the node to the visited set or do any kind of work, here work is done in printing
-            if (!visitedSet.contains(currentNode)) {
-                visitedSet.add(currentNode);
-                System.out.print(" " + currentNode.data + " ");
             }
 
             currentNode = nodeStack.pop();
+
+            System.out.print(" " + currentNode.data + " ");
+
+            currentNode = currentNode.rightChild;
+        }
+
+    }
+
+    public void inOrderRecursive(TreeNode node) {
+        if (node == null) return;
+
+        //go to left sub tree
+        inOrderRecursive(node.leftChild);
+
+        //visit the node / or any other operation (print the data)
+        System.out.print(" " + node.data + " ");
+
+        //go to right sub tree
+        inOrderRecursive(node.rightChild);
+    }
+
+    public void postOrderRecursive(TreeNode node) {
+        if (node == null) return;
+
+        //go to left sub tree
+        postOrderRecursive(node.leftChild);
+
+        //go to right sub tree
+        postOrderRecursive(node.rightChild);
+
+        //visit the node / or any other operation (print the data)
+        System.out.print(" " + node.data + " ");
+    }
+
+    //the policy for post-order is L-R-N (go to left node ,then right node before visiting the parent node)
+    //for every node in the tree
+    public void postOrderIterative() {
+        Stack<TreeNode> tempStack = new Stack<>();
+
+        Stack<TreeNode> resultStack = new Stack<>();
+
+        tempStack.push(root);
+
+        while(!tempStack.isEmpty()){
+
+            TreeNode current = tempStack.pop();
+
+            resultStack.push(current);
+
+            if(current.leftChild != null) tempStack.push(current.leftChild);
+
+            if(current.rightChild != null) tempStack.push(current.rightChild);
+        }
+
+        //print elements from the result stack
+        while(!resultStack.isEmpty()){
+            //visit the node / or any other operation (print the data)
+            System.out.print(" " + resultStack.pop().data + " ");
         }
     }
 
@@ -168,23 +166,19 @@ public class Tree {
 
         queue.add(root);
 
-        while (!queue.isEmpty()) {
+        while(!queue.isEmpty()){
             //remove from the front of the queue
-            TreeNode currentNode = queue.poll();
-
-            //skip null nodes added to the queue
-            if (currentNode == null) {
-                continue;
-            }
+            TreeNode current = queue.poll();
 
             //add the node to the visited set or do any kind of work, here work is done in printing
-            System.out.print(" " + currentNode.data + " ");
+            System.out.print(" " + current.data + " ");
 
             //add the left non-null child to the queue
-            queue.add(currentNode.leftChild);
+            if (current.leftChild != null) queue.add(current.leftChild);
 
             //add the right non-null child to the queue
-             queue.add(currentNode.rightChild);
+            if (current.rightChild != null) queue.add(current.rightChild);
+
         }
     }
 

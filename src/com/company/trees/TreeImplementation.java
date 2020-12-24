@@ -13,16 +13,25 @@ public class TreeImplementation {
         tree.insertNode(17);
         tree.insertNode(40);
 
-        System.out.print("in-order transversal : ");
-        tree.inOrderTransversal();
+        System.out.print("\npre-order transversal (recursive) : ");
+        tree.preOrderRecursive(tree.root);
 
-        System.out.print("\npre-order transversal : ");
-        tree.preOrderTransversal();
+        System.out.print("\npre-order transversal (iterative) : ");
+        tree.preOrderIterative();
+
+        System.out.print("\nin-order transversal (recursive) : ");
+        tree.inOrderRecursive(tree.root);
+
+        System.out.print("\nin-order transversal (iterative) : ");
+        tree.inOrderIterative();
+
+        System.out.print("\npost-order transversal (recursive) : ");
+        tree.postOrderRecursive(tree.root);
+
+        System.out.print("\npost-order transversal (iterative) : ");
+        tree.postOrderIterative();
 
         System.out.print("\nlevel-order transversal : ");
         tree.levelOrderTransversal();
-
-        System.out.print("\npost-order transversal : ");
-        tree.postOrderTransversal();
     }
 }
