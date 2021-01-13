@@ -24,6 +24,7 @@ public class LinkedList {
         }
         //start from the head of the list
         Node currentNode = head;
+
         //get to the last node i.e node that has the null reference as the next node
         while (currentNode.getNext() != null) {
             currentNode = currentNode.getNext();
@@ -132,8 +133,10 @@ public class LinkedList {
 
         //get the next node of the node to be deleted
         Node tempNode = currentNode.getNext().getNext();
+
         //delete the node
         currentNode.getNext().setNext(null);
+
         //link up the node
         currentNode.setNext(tempNode);
     }

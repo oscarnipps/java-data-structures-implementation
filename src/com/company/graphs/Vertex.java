@@ -8,9 +8,16 @@ public class Vertex {
     public String data;
     public List<Vertex> neighbours;
     public boolean isVisited;
+    public int weight;
 
     public Vertex(String data) {
         this.data = data;
+        neighbours = new ArrayList<>();
+    }
+
+    public Vertex(String data , int weight) {
+        this.data = data;
+        this.weight = weight;
         neighbours = new ArrayList<>();
     }
 
